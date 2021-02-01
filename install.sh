@@ -61,14 +61,19 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 echo 'installing nvm' 
-sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash)"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | zsh
 
 source ~/.zshrc
 nvm --version
+
+echo 'installing node 14' 
 nvm install 14
-nvm alias default 14
 node --version
 npm --version
+
+echo 'installing Vue'
+npm install -g @vue/cli
+vue --version
 
 echo 'installing autosuggestions' 
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
@@ -85,7 +90,7 @@ wget https://downloads.slack-edge.com/linux_releases/slack-desktop-3.3.8-amd64.d
 sudo apt install ./slack-desktop-*.deb -y
 
 echo 'installing discord'
-sudo snap install discord -y
+sudo snap install discord
 
 echo 'installing terminator'
 sudo apt-get update
@@ -95,4 +100,9 @@ echo 'installing kicad nightly build'
 sudo add-apt-repository --yes ppa:kicad/kicad-dev-nightly
 sudo apt update
 sudo apt install kicad-nightly -y
-sudo apt install kicad-nightly-footprints kicad-nightly-libraries kicad-nightly-packages3d kicad-nightly-symbols kicad-nightly-templates -y
+
+echo 'installing pip3'
+sudo apt install python3-venv python3-pip
+
+echo 'installing KiKit Plugin'
+pip3 install KiKit
